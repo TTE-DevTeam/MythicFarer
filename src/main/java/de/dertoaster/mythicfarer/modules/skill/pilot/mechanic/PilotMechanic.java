@@ -1,5 +1,6 @@
 package de.dertoaster.mythicfarer.modules.skill.pilot.mechanic;
 
+import de.dertoaster.mythicfarer.craft.MythicMobPilotedCraft;
 import de.dertoaster.mythicfarer.util.CraftUtil;
 import io.lumine.mythic.api.adapters.AbstractEntity;
 import io.lumine.mythic.api.config.MythicLineConfig;
@@ -9,8 +10,6 @@ import io.lumine.mythic.api.skills.SkillResult;
 import net.countercraft.movecraft.MovecraftLocation;
 import net.countercraft.movecraft.craft.Craft;
 import net.countercraft.movecraft.craft.CraftManager;
-import net.countercraft.movecraft.craft.PilotedCraftImpl;
-import net.countercraft.movecraft.craft.PlayerCraftImpl;
 import net.countercraft.movecraft.craft.type.TypeSafeCraftType;
 import net.countercraft.movecraft.localisation.I18nSupport;
 import net.countercraft.movecraft.processing.functions.Result;
@@ -18,7 +17,6 @@ import net.countercraft.movecraft.util.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 
 public class PilotMechanic implements INoTargetSkill {
 
@@ -55,11 +53,8 @@ public class PilotMechanic implements INoTargetSkill {
 
                 if (parents.size() > 0) {
                     return new Pair(Result.failWithMessage(I18nSupport.getInternationalisedString("Detection - Failed - Already commanding a craft")), (Object)null);
-                } else if (p instanceof Player) {
-                    Player player = (Player)p;
-                    return new Pair(Result.succeed(), new PlayerCraftImpl(type, w, player));
                 } else {
-                    return new Pair(Result.succeed(), new PilotedCraftImpl(type, w, p));
+                    return new Pair(Result.succeed(), new MythicMobPilotedCraft(type, w, p));
                 }
             }, world, bukkitEntity, Bukkit.getConsoleSender(), (craft) -> () -> {
                 // TODO: Should we support this?
