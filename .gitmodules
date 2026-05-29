@@ -1,0 +1,3 @@
+[submodule "ModuleCore"]
+	path = ModuleCore
+	url = https://github.com/TTE-DevTeam/ModuleCore
