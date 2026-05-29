@@ -1,1 +1,12 @@
 LogLevel: INFO
+Modules:
+  PilotSkill:
+    Enabled: True
+  ReleaseSkill:
+    Enabled: True
+  ScuttleSkill:
+    Enabled: True
+  BasicCraftTargeter:
+    Enabled: True
+  RemoteSignSkill:
+    Enabled: True
