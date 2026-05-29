@@ -6,7 +6,7 @@ import io.lumine.mythic.api.skills.SkillMetadata;
 import io.lumine.mythic.api.skills.SkillResult;
 import net.countercraft.movecraft.craft.Craft;
 
-public interface ITargetedCraftSkill extends INoTargetSkill, ICraftAwareSkill {
+public interface INoTargetCraftSkill extends INoTargetSkill, ICraftAwareSkill {
 
     @Override
     default SkillResult cast(SkillMetadata skillMetadata) {

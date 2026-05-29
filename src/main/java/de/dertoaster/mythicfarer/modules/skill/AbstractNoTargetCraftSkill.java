@@ -2,11 +2,11 @@ package de.dertoaster.mythicfarer.modules.skill;
 
 import io.lumine.mythic.api.config.MythicLineConfig;
 
-public abstract class AbstractTargetedCraftSkill implements ITargetedCraftSkill {
+public abstract class AbstractNoTargetCraftSkill implements INoTargetCraftSkill {
     private final boolean checkPassengerCraft;
     private final boolean checkOwnedCraft;
 
-    public AbstractTargetedCraftSkill(MythicLineConfig mlc) {
+    public AbstractNoTargetCraftSkill(MythicLineConfig mlc) {
         this.checkPassengerCraft = mlc.getBoolean("checkPassengerCraft", false);
         this.checkOwnedCraft = mlc.getBoolean("checkOwnedCraft", true);
     }

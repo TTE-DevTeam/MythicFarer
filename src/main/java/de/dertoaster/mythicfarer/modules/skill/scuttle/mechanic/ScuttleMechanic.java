@@ -1,6 +1,6 @@
 package de.dertoaster.mythicfarer.modules.skill.scuttle.mechanic;
 
-import de.dertoaster.mythicfarer.modules.skill.AbstractTargetedCraftSkill;
+import de.dertoaster.mythicfarer.modules.skill.AbstractNoTargetCraftSkill;
 import io.lumine.mythic.api.adapters.AbstractEntity;
 import io.lumine.mythic.api.config.MythicLineConfig;
 import io.lumine.mythic.api.skills.SkillMetadata;
@@ -10,7 +10,7 @@ import net.countercraft.movecraft.craft.CraftManager;
 import net.countercraft.movecraft.craft.SinkingCraft;
 import net.countercraft.movecraft.events.CraftSinkEvent;
 
-public class ScuttleMechanic extends AbstractTargetedCraftSkill {
+public class ScuttleMechanic extends AbstractNoTargetCraftSkill {
     public ScuttleMechanic(MythicLineConfig mlc) {
         super(mlc);
     }

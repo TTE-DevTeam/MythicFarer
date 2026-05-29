@@ -1,6 +1,6 @@
 package de.dertoaster.mythicfarer.modules.skill.remotesign.mechanic;
 
-import de.dertoaster.mythicfarer.modules.skill.AbstractTargetedCraftSkill;
+import de.dertoaster.mythicfarer.modules.skill.AbstractNoTargetCraftSkill;
 import io.lumine.mythic.api.adapters.AbstractEntity;
 import io.lumine.mythic.api.config.MythicLineConfig;
 import io.lumine.mythic.api.skills.SkillMetadata;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class RemoteSignMechanic extends AbstractTargetedCraftSkill {
+public class RemoteSignMechanic extends AbstractNoTargetCraftSkill {
 
     protected final String targetIdent;
     protected final Action clickType;
