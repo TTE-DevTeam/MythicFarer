@@ -19,8 +19,6 @@ public interface ICraftAwareSkill {
     // Return wether or not to check a craft of which we are a passenger
     boolean checkPassengerCraft();
 
-    SkillResult castAtCraft(SkillMetadata skillMetadata, AbstractEntity entityTarget, Craft craftTarget);
-
     @Nullable
     public default Craft getCraftByMythicMob(final AbstractEntity abstractEntity) {
         Entity bukkitEntity = abstractEntity.getBukkitEntity();;

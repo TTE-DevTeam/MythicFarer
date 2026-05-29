@@ -20,4 +20,6 @@ public interface INoTargetCraftSkill extends INoTargetSkill, ICraftAwareSkill {
         return SkillResult.INVALID_TARGET;
     }
 
+    SkillResult castAtCraft(SkillMetadata skillMetadata, AbstractEntity entityTarget, Craft craftTarget);
+
 }
