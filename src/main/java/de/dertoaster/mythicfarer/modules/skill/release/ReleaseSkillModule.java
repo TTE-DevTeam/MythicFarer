@@ -12,7 +12,7 @@ import java.util.function.Function;
 public class ReleaseSkillModule extends AbstractSkillModule {
     @Override
     protected Map<String, Function<MythicLineConfig, ISkillMechanic>> getProvidedSkills() {
-        return Map.of("releaseOwnedCraft", ReleaseMechanic::new);
+        return Map.of("releaseCraft", ReleaseMechanic::new);
     }
 
     @Override

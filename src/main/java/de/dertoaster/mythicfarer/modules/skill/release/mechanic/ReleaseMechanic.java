@@ -1,6 +1,6 @@
 package de.dertoaster.mythicfarer.modules.skill.release.mechanic;
 
-import de.dertoaster.mythicfarer.modules.skill.ITargetedCraftSkill;
+import de.dertoaster.mythicfarer.modules.skill.AbstractTargetedCraftSkill;
 import io.lumine.mythic.api.adapters.AbstractEntity;
 import io.lumine.mythic.api.config.MythicLineConfig;
 import io.lumine.mythic.api.skills.SkillMetadata;
@@ -10,22 +10,13 @@ import net.countercraft.movecraft.craft.CraftManager;
 import net.countercraft.movecraft.craft.SinkingCraft;
 import net.countercraft.movecraft.events.CraftReleaseEvent;
 
-public class ReleaseMechanic implements ITargetedCraftSkill {
+public class ReleaseMechanic extends AbstractTargetedCraftSkill {
 
     protected final boolean forceRelease;
 
     public ReleaseMechanic(MythicLineConfig mlc) {
+        super(mlc);
         this.forceRelease = mlc.getBoolean("forceRelease", false);
-    }
-
-    @Override
-    public boolean checkOwnedCraft() {
-        return true;
-    }
-
-    @Override
-    public boolean checkPassengerCraft() {
-        return false;
     }
 
     @Override
