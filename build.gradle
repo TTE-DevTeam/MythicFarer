@@ -58,9 +58,9 @@ dependencies {
     paperweight.paperDevBundle("${paper_version}")
 
     implementation("TTE-DevTeam:Windfarer:${windfarer_version}@jar")
-    compileOnly files("libs/TTE-Additions-${tte_additions_version}.jar")
-    compileOnly("org.roaringbitmap:RoaringBitmap:${roaring_bitmap_version}")
-    compileOnly("io.lumine:Mythic-Dist:${mythicmobs_version}")
+    implementation files("libs/TTE-Additions-${tte_additions_version}.jar")
+    implementation("org.roaringbitmap:RoaringBitmap:${roaring_bitmap_version}")
+    implementation("io.lumine:Mythic-Dist:${mythicmobs_version}")
 
     shadow(project("ModuleCore"))
 }
