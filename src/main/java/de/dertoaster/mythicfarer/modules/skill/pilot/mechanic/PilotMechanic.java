@@ -3,7 +3,7 @@ package de.dertoaster.mythicfarer.modules.skill.pilot.mechanic;
 import de.dertoaster.mythicfarer.util.CraftUtil;
 import io.lumine.mythic.api.adapters.AbstractEntity;
 import io.lumine.mythic.api.config.MythicLineConfig;
-import io.lumine.mythic.api.skills.ITargetedEntitySkill;
+import io.lumine.mythic.api.skills.INoTargetSkill;
 import io.lumine.mythic.api.skills.SkillMetadata;
 import io.lumine.mythic.api.skills.SkillResult;
 import net.countercraft.movecraft.MovecraftLocation;
@@ -20,7 +20,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class PilotMechanic implements ITargetedEntitySkill {
+public class PilotMechanic implements INoTargetSkill {
 
     protected final String craftTypeName;
 
@@ -29,8 +29,12 @@ public class PilotMechanic implements ITargetedEntitySkill {
     }
 
     @Override
-    public SkillResult castAtEntity(SkillMetadata skillMetadata, AbstractEntity abstractEntity) {
+    public SkillResult cast(SkillMetadata skillMetadata) {
+        final AbstractEntity abstractEntity = skillMetadata.getCaster().getEntity();
         Entity bukkitEntity = abstractEntity.getBukkitEntity();
+        if (bukkitEntity == null) {
+            return SkillResult.CONDITION_FAILED;
+        }
         Craft craftForEntity = CraftUtil.getCraftForEntity(bukkitEntity);
 
         // If we already have a craft, success or not?

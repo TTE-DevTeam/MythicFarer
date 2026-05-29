@@ -2,7 +2,7 @@ package de.dertoaster.mythicfarer.modules.skill;
 
 import de.dertoaster.mythicfarer.util.CraftUtil;
 import io.lumine.mythic.api.adapters.AbstractEntity;
-import io.lumine.mythic.api.skills.ITargetedEntitySkill;
+import io.lumine.mythic.api.skills.INoTargetSkill;
 import io.lumine.mythic.api.skills.SkillMetadata;
 import io.lumine.mythic.api.skills.SkillResult;
 import net.countercraft.movecraft.MovecraftLocation;
@@ -12,10 +12,11 @@ import org.bukkit.entity.Entity;
 
 import java.util.UUID;
 
-public interface ITargetedCraftSkill extends ITargetedEntitySkill {
+public interface ITargetedCraftSkill extends INoTargetSkill {
 
     @Override
-    default SkillResult castAtEntity(SkillMetadata skillMetadata, AbstractEntity abstractEntity) {
+    default SkillResult cast(SkillMetadata skillMetadata) {
+        final AbstractEntity abstractEntity = skillMetadata.getCaster().getEntity();
         Entity bukkitEntity = abstractEntity.getBukkitEntity();;
         if (bukkitEntity != null) {
             Craft craft = null;
