@@ -8,8 +8,10 @@ import net.countercraft.movecraft.craft.type.TypeSafeCraftType;
 import net.countercraft.movecraft.processing.MovecraftWorld;
 import net.countercraft.movecraft.util.hitboxes.BitmapHitBox;
 import net.countercraft.movecraft.util.hitboxes.HitBox;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -79,6 +81,20 @@ public class CraftUtil {
             return !craftType.get(PropertyKeys.HARVESTER_BLADE_BLOCKS).contains(craftMaterialColliding);
         }
         return true;
+    }
+
+    public static Craft getCraftForEntity(final Entity entity) {
+        if (entity == null) {
+            return null;
+        }
+        Craft craft = CraftManager.getInstance().getCraftByEntity(entity);
+        if (craft != null) {
+            return craft;
+        }
+
+        MovecraftLocation location = new MovecraftLocation(entity.getLocation());
+        craft = fastFindCraftAt(location, entity.getWorld().getUID(), !Bukkit.isPrimaryThread());
+        return craft;
     }
 
 }
