@@ -1,3 +1,4 @@
 # Targeters
 de.dertoaster.mythicfarer.modules.targeter.craft.basic.BasicCraftTargeterModule
 # Skills
+de.dertoaster.mythicfarer.modules.skill.pilot.PilotSkillModule
