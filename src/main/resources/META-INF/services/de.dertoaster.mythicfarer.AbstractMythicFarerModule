@@ -5,3 +5,4 @@ de.dertoaster.mythicfarer.modules.skill.pilot.PilotSkillModule
 de.dertoaster.mythicfarer.modules.skill.release.ReleaseSkillModule
 de.dertoaster.mythicfarer.modules.skill.scuttle.ScuttleSkillModule
 de.dertoaster.mythicfarer.modules.skill.remotesign.RemoteSkillModule
+de.dertoaster.mythicfarer.modules.skill.movement.move.MoveSkillModule
