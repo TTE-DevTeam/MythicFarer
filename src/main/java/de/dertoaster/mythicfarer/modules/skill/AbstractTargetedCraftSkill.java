@@ -35,6 +35,9 @@ public abstract class AbstractTargetedCraftSkill extends AbstractCraftAwareSkill
 
     protected SkillResult cast(SkillMetadata skillMetadata, AbstractLocation targetLocation, @Nullable AbstractEntity targetEntity) {
         final Craft craft = this.getCraftByMobOrLocation(targetEntity, targetLocation);
+        if (craft == null) {
+            return SkillResult.INVALID_TARGET;
+        }
         return this.cast(skillMetadata, targetLocation, targetEntity, craft);
     }
 
