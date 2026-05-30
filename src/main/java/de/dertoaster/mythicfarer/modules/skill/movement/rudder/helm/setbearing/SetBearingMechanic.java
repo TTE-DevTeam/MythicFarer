@@ -1,7 +1,7 @@
-package de.dertoaster.mythicfarer.modules.skill.movement.rudder.trim.setangle;
+package de.dertoaster.mythicfarer.modules.skill.movement.rudder.helm.setbearing;
 
+import de.dertoaster.movecrafttteadditions.features.movementrework.Constants;
 import de.dertoaster.movecrafttteadditions.features.movementrework.DataTags;
-import de.dertoaster.movecrafttteadditions.features.movementrework.MovementReworkFeature;
 import de.dertoaster.mythicfarer.modules.skill.AbstractTargetedCraftSkill;
 import io.lumine.mythic.api.adapters.AbstractEntity;
 import io.lumine.mythic.api.adapters.AbstractLocation;
@@ -12,11 +12,11 @@ import net.countercraft.movecraft.craft.Craft;
 import net.countercraft.movecraft.craft.SinkingCraft;
 import org.jetbrains.annotations.Nullable;
 
-public class SetTrimRudderAngleMechanic extends AbstractTargetedCraftSkill {
+public class SetBearingMechanic extends AbstractTargetedCraftSkill {
 
     protected final double angle;
 
-    public SetTrimRudderAngleMechanic(MythicLineConfig mlc) {
+    public SetBearingMechanic(MythicLineConfig mlc) {
         super(mlc);
         this.angle = Math.toRadians(mlc.getDouble("angle", 0.0D));
     }
@@ -26,11 +26,11 @@ public class SetTrimRudderAngleMechanic extends AbstractTargetedCraftSkill {
         if (craftAtTarget instanceof SinkingCraft)
             return SkillResult.CONDITION_FAILED;
 
-        final double min = craftAtTarget.getCraftProperties().get(MovementReworkFeature.ELEVATOR_MIN_ANGLE);
-        final double max = craftAtTarget.getCraftProperties().get(MovementReworkFeature.ELEVATOR_MAX_ANGLE);
+        final double min = -Constants.HALF_RIGHT_ANGLE_RAD;
+        final double max = Constants.HALF_RIGHT_ANGLE_RAD;
 
         final double value = Math.clamp(this.angle, min, max);
-        craftAtTarget.setDataTag(DataTags.ELEVATOR_RUDDER_ANGLE, value);
+        craftAtTarget.getDataTag(DataTags.BEARING_ANGLE).set(value);
 
         return SkillResult.SUCCESS;
     }

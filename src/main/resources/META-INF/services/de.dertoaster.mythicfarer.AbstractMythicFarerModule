@@ -6,3 +6,7 @@ de.dertoaster.mythicfarer.modules.skill.release.ReleaseSkillModule
 de.dertoaster.mythicfarer.modules.skill.scuttle.ScuttleSkillModule
 de.dertoaster.mythicfarer.modules.skill.remotesign.RemoteSkillModule
 de.dertoaster.mythicfarer.modules.skill.movement.move.MoveSkillModule
+de.dertoaster.mythicfarer.modules.skill.movement.rudder.trim.TrimSkillsModule
+de.dertoaster.mythicfarer.modules.skill.movement.rudder.helm.HelmSkillsModule
+# Triggers
+# Conditions

@@ -8,9 +8,17 @@ public abstract class AbstractTTEAdditionsDependentModule extends AbstractSkillM
     @Override
     public boolean shouldLoad() {
         if (super.shouldLoad()) {
-            return Bukkit.getPluginManager().getPlugin("Movecraft-TTE-Additions") != null;
+            return this.tteAdditionsIsLoaded() || !this.requiresTTEAlways();
         } else {
             return false;
         }
+    }
+
+    protected final boolean tteAdditionsIsLoaded() {
+        return Bukkit.getPluginManager().getPlugin("Movecraft-TTE-Additions") != null;
+    }
+
+    protected boolean requiresTTEAlways() {
+        return true;
     }
 }
