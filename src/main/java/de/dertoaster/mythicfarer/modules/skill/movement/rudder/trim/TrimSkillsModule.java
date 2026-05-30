@@ -1,26 +1,26 @@
-package de.dertoaster.mythicfarer.modules.skill.remotesign;
+package de.dertoaster.mythicfarer.modules.skill.movement.rudder.trim;
 
 import de.dertoaster.modulecore.AbstractModularPlugin;
-import de.dertoaster.mythicfarer.modules.skill.AbstractSkillModule;
-import de.dertoaster.mythicfarer.modules.skill.remotesign.mechanic.RemoteSignMechanic;
+import de.dertoaster.mythicfarer.modules.skill.movement.rudder.AbstractTTEAdditionsDependentModule;
+import de.dertoaster.mythicfarer.modules.skill.movement.rudder.trim.interact.InteractTrimRudderMechanic;
+import de.dertoaster.mythicfarer.modules.skill.movement.rudder.trim.setangle.SetTrimRudderAngleMechanic;
 import io.lumine.mythic.api.config.MythicLineConfig;
-import io.lumine.mythic.api.skills.INoTargetSkill;
 import io.lumine.mythic.api.skills.ISkillMechanic;
-import io.lumine.mythic.api.skills.SkillTrigger;
-import io.lumine.mythic.bukkit.events.MythicTriggerEvent;
 
 import java.util.Map;
 import java.util.function.Function;
 
-public class RemoteSkillModule extends AbstractSkillModule {
+public class TrimSkillsModule extends AbstractTTEAdditionsDependentModule {
     @Override
     protected Map<String, Function<MythicLineConfig, ISkillMechanic>> getProvidedSkills() {
-        return Map.of("remoteSign", RemoteSignMechanic::new);
+        return Map.of(
+                "interactTrimRudder", InteractTrimRudderMechanic::new,
+                "setTrimAngle", SetTrimRudderAngleMechanic::new);
     }
 
     @Override
     public String getModuleName() {
-        return "RemoteSignSkill";
+        return "TrimSkills";
     }
 
     @Override

@@ -10,3 +10,5 @@ Modules:
     Enabled: True
   RemoteSignSkill:
     Enabled: True
+  TrimSkills:
+    Enabled: True
