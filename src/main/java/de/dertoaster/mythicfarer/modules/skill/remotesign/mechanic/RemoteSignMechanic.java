@@ -1,13 +1,15 @@
 package de.dertoaster.mythicfarer.modules.skill.remotesign.mechanic;
 
-import de.dertoaster.mythicfarer.modules.skill.AbstractNoTargetCraftSkill;
+import de.dertoaster.mythicfarer.modules.skill.AbstractTargetedCraftSkill;
 import io.lumine.mythic.api.adapters.AbstractEntity;
+import io.lumine.mythic.api.adapters.AbstractLocation;
 import io.lumine.mythic.api.config.MythicLineConfig;
 import io.lumine.mythic.api.skills.SkillMetadata;
 import io.lumine.mythic.api.skills.SkillResult;
 import net.countercraft.movecraft.MovecraftLocation;
 import net.countercraft.movecraft.config.Settings;
 import net.countercraft.movecraft.craft.Craft;
+import net.countercraft.movecraft.craft.PilotedCraft;
 import net.countercraft.movecraft.craft.SinkingCraft;
 import net.countercraft.movecraft.localisation.I18nSupport;
 import net.countercraft.movecraft.sign.AbstractMovecraftSign;
@@ -21,12 +23,13 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.block.Action;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class RemoteSignMechanic extends AbstractNoTargetCraftSkill {
+public class RemoteSignMechanic extends AbstractTargetedCraftSkill {
 
     protected final String targetIdent;
     protected final Action clickType;
@@ -38,11 +41,14 @@ public class RemoteSignMechanic extends AbstractNoTargetCraftSkill {
     }
 
     @Override
-    public SkillResult castAtCraft(SkillMetadata skillMetadata, AbstractEntity entityTarget, Craft craftTarget) {
+    protected SkillResult cast(SkillMetadata skillMetadata, AbstractLocation targetLocation, @Nullable AbstractEntity targetEntity, Craft craftTarget) {
         if (craftTarget instanceof SinkingCraft) {
             return SkillResult.INVALID_TARGET;
         }
-        final Entity interactor = entityTarget.getBukkitEntity();
+        final Entity interactor = targetEntity != null && targetEntity.getBukkitEntity() != null ? targetEntity.getBukkitEntity() : craftTarget instanceof PilotedCraft ? ((PilotedCraft)craftTarget).getPilotEntity() : null;
+        if (interactor == null) {
+            return SkillResult.INVALID_TARGET;
+        }
 
         Map<AbstractMovecraftSign, LinkedList<SignListener.SignWrapper>> foundTargetSigns = new HashMap<>();
         boolean firstError = true;
