@@ -2,8 +2,6 @@ package de.dertoaster.mythicfarer.modules.skill;
 
 import de.dertoaster.mythicfarer.util.CraftUtil;
 import io.lumine.mythic.api.adapters.AbstractEntity;
-import io.lumine.mythic.api.skills.SkillMetadata;
-import io.lumine.mythic.api.skills.SkillResult;
 import net.countercraft.movecraft.MovecraftLocation;
 import net.countercraft.movecraft.craft.Craft;
 import net.countercraft.movecraft.craft.CraftManager;
